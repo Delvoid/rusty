@@ -100,4 +100,11 @@ fn main() {
     let slice = &a[1..3];
 
     println!("The value of slice is: {:?}", slice); // [2, 3]
+
+    let _first_in_slice = slice[0];
+
+    // iterate over slice
+    for value in slice {
+        println!("{}", value);
+    }
 }
