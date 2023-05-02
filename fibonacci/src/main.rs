@@ -42,3 +42,25 @@ fn fibonacci(n: u32) -> u64 {
 
     b
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_fibonacci() {
+        assert_eq!(fibonacci(0), 0);
+        assert_eq!(fibonacci(1), 1);
+        assert_eq!(fibonacci(2), 1);
+        assert_eq!(fibonacci(3), 2);
+        assert_eq!(fibonacci(4), 3);
+        assert_eq!(fibonacci(5), 5);
+        assert_eq!(fibonacci(8), 21);
+        assert_eq!(fibonacci(9), 34);
+        assert_eq!(fibonacci(12), 144);
+        assert_eq!(fibonacci(14), 377);
+        assert_eq!(fibonacci(16), 987);
+        assert_eq!(fibonacci(18), 2584);
+        assert_eq!(fibonacci(23), 28657);
+    }
+}
