@@ -143,4 +143,15 @@ fn main() {
     // useful when you dont want utf-8 encoding
     let rust = "\x52\x75\x73\x74";
     println!("The value of rust is: {}", rust);
+
+    //appened to string
+    let mut s = String::from("foo");
+    s.push_str("bar");
+    s.push('W');
+    println!("The value of s is: {}", s);
+
+    // iterate over string
+    for c in s.chars() {
+        println!("{}", c);
+    }
 }
