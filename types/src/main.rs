@@ -73,4 +73,25 @@ fn main() {
     // access via index
     let _first = _a[0];
     let _second = _a[1];
+
+    // vectors
+    let mut v = vec![1, 2, 3, 4, 5];
+    let _v2: Vec<i32> = Vec::new();
+
+    // updating a vector
+    v.push(7);
+
+    println!("The value of v is: {:?}", v);
+    v.pop();
+    v.remove(1);
+
+    println!("The value of v is: {:?}", v);
+
+    let vec: Vec<i32> = (0..5).collect();
+    println!("The value of vec is: {:?}", vec);
+
+    //iterate over vector
+    for value in &v {
+        println!("{}", value);
+    }
 }
