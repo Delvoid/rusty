@@ -20,6 +20,7 @@ fn main() {
 
     println!("Even numbers: {:?}", even_numbers);
     println!("Odd numbers: {:?}", odd_numbers);
+    println!("{}", gcd(15, 10));
 }
 
 fn another_function() {
@@ -90,4 +91,16 @@ where
         }
     }
     result
+}
+
+fn gcd(mut a: u64, mut b: u64) -> u64 {
+    while a != 0 {
+        if a < b {
+            let t = std::mem::replace(&mut a, b);
+            a = b;
+            b = t;
+        }
+        a %= b;
+    }
+    b
 }
