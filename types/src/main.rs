@@ -107,4 +107,10 @@ fn main() {
     for value in slice {
         println!("{}", value);
     }
+
+    //string slices
+    let string = String::from("Hello, world!");
+    let hello_slice = &string[0..5];
+
+    println!("The value of hello_slice is: {}", hello_slice);
 }
