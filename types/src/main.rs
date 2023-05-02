@@ -113,4 +113,34 @@ fn main() {
     let hello_slice = &string[0..5];
 
     println!("The value of hello_slice is: {}", hello_slice);
+
+    // strings
+    let mut _s = String::new();
+    let sting_from = String::from("initial contents");
+    println!("The value of sting_from is: {}", sting_from);
+
+    let to_string = "change to string".to_string();
+    println!("The value of to_string is: {}", to_string);
+
+    let name = "Delvoid".to_string();
+    let new_name = name.replace("void", "");
+
+    println!("The value of new_name is: {}", new_name);
+
+    // &str = string slice or "stir"
+    let str1 = "hello"; // &str
+    let str2 = str1.to_string();
+    let str3 = &str2;
+
+    println!("The value of str1 is: {}", str1);
+    println!("The value of str2 is: {}", str2);
+    println!("The value of str3 is: {}", str3);
+
+    //compare string
+    println!("{}", "ONE".to_lowercase() == "one");
+
+    // string literals
+    // useful when you dont want utf-8 encoding
+    let rust = "\x52\x75\x73\x74";
+    println!("The value of rust is: {}", rust);
 }
