@@ -72,3 +72,26 @@ fn fahrenheit_to_celsius(fahrenheit: f32) -> f32 {
 fn celsius_to_fahrenheit(celsius: f32) -> f32 {
     (celsius * 9.0 / 5.0) + 32.0
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_fahrenheit_to_celsius() {
+        assert_eq!(fahrenheit_to_celsius(32.0), 0.0);
+        assert_eq!(fahrenheit_to_celsius(212.0), 100.0);
+        assert_eq!(fahrenheit_to_celsius(98.6), 37.0);
+        assert_eq!(fahrenheit_to_celsius(72.0), 22.222221);
+        assert_eq!(fahrenheit_to_celsius(60.0), 15.555555);
+    }
+
+    #[test]
+    fn test_celsius_to_fahrenheit() {
+        assert_eq!(celsius_to_fahrenheit(0.0), 32.0);
+        assert_eq!(celsius_to_fahrenheit(100.0), 212.0);
+        assert_eq!(celsius_to_fahrenheit(37.0), 98.6);
+        assert_eq!(celsius_to_fahrenheit(22.222223), 72.0);
+        assert_eq!(celsius_to_fahrenheit(15.555555), 60.0);
+    }
+}
