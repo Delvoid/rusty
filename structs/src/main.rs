@@ -1,3 +1,5 @@
+use std::vec;
+
 struct User {
     username: String,
     _sign_in_count: u64,
@@ -55,7 +57,14 @@ fn main() {
         top_speed: 120,
     };
 
+    let mut motorcycle = Motorcycle {
+        color: String::from("green"),
+        mpg: 80,
+        top_speed: 210,
+    };
+
     println!("{:?}", car);
+    println!("{:?}", motorcycle);
 
     car.set_color(String::from("blue"));
     println!("{:?}", car);
@@ -67,6 +76,11 @@ fn main() {
     println!("{:?}", car);
 
     trait_on_diff_types();
+
+    print(vec![1, 2, 3]);
+    print("Hello, world!");
+    print(42);
+    print(String::from("some string to test"));
 }
 
 fn build_user(username: String) -> User {
@@ -84,7 +98,34 @@ struct Car {
     top_speed: i16,
 }
 
-impl Car {
+#[derive(Debug)]
+struct Motorcycle {
+    color: String,
+    mpg: i8,
+    top_speed: i16,
+}
+
+trait Properties {
+    fn set_mpg(&mut self, mpg: i8);
+    fn set_color(&mut self, color: String);
+    fn set_top_speed(&mut self, top_speed: i16);
+}
+
+impl Properties for Car {
+    fn set_mpg(&mut self, mpg: i8) {
+        self.mpg = mpg;
+    }
+
+    fn set_color(&mut self, color: String) {
+        self.color = color;
+    }
+
+    fn set_top_speed(&mut self, top_speed: i16) {
+        self.top_speed = top_speed;
+    }
+}
+
+impl Properties for Motorcycle {
     fn set_mpg(&mut self, mpg: i8) {
         self.mpg = mpg;
     }
@@ -150,4 +191,8 @@ fn trait_on_diff_types() {
     let cat = Cat;
     dog.speak();
     cat.speak();
+}
+
+fn print<T: std::fmt::Debug>(t: T) {
+    println!("{:?}", t);
 }
