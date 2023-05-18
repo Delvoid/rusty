@@ -9,6 +9,9 @@ pub fn b_heaps() {
     heap.push(5);
     heap.push(1);
 
+    println!("heap {:?}", heap);
+    println!("heap peek {:?}", heap.peek());
+
     // We can iterate over the elements in arbitrary order.
     for x in heap.iter() {
         println!("{}", x);
