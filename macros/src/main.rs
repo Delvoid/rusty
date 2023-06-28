@@ -26,10 +26,30 @@ macro_rules! average {
     }}
 }
 
+macro_rules! op {
+    ($a: expr, $b: expr, $op: expr) => {
+        match $op {
+            1 => $a + $b,
+            2 => $a - $b,
+            3 => $a * $b,
+            4 => $a / $b,
+            5 => $a % $b,
+            _ => -1,
+        }
+    };
+}
+
 #[debug_print]
 fn main() {
     let test = gcd!(14, 17);
     println!("{}", test);
     println!("{}", average!(1.0, 2.0, 3.0));
-    println!("{}", average!(1, 2, 3, 4, 5))
+    println!("{}", average!(1, 2, 3, 4, 5));
+
+    println!("{}", op!(5, 2, 1));
+    println!("{}", op!(5, 2, 2));
+    println!("{}", op!(5, 2, 3));
+    println!("{}", op!(5, 2, 4));
+    println!("{}", op!(5, 2, 5));
+    println!("{}", op!(5, 2, 6));
 }
