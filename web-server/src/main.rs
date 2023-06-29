@@ -17,6 +17,15 @@ fn main() {
             handle_connection(stream);
         });
     }
+
+    // example of how to limit the number of requests and gracefully shut down
+    // for stream in listener.incoming().take(2) {
+    //     let stream = stream.unwrap();
+
+    //     pool.execute(|| {
+    //         handle_connection(stream);
+    //     });
+    // }
 }
 fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&mut stream);
