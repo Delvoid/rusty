@@ -17,10 +17,13 @@ fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&mut stream);
     let request_line = buf_reader.lines().next().unwrap().unwrap();
 
-    if request_line == "GET / HTTP/1.1" {
-        get_index(stream);
-    } else {
-        get_404(stream);
+    match &request_line[..] {
+        "GET / HTTP/1.1" => get_index(stream),
+        "GET /sleep HTTP/1.1" => {
+            std::thread::sleep(std::time::Duration::from_secs(5));
+            get_index(stream);
+        }
+        _ => get_404(stream),
     }
 }
 
