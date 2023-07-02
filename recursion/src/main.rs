@@ -12,6 +12,12 @@ fn main() {
     println!("Tower of hanoi for 3 disks is {}", tower_of_hanoi(0));
     println!("Tower of hanoi for 3 disks is {}", tower_of_hanoi(3));
     println!("Tower of hanoi for 4 disks is {}", tower_of_hanoi(4));
+
+    // sum triangle of array
+
+    let mut arr = vec![1, 2, 3, 4, 5];
+    let size = arr.len();
+    sum_triangle_of_array(&mut arr, size);
 }
 
 fn fact(num: i32) -> i32 {
@@ -52,4 +58,20 @@ fn tower_of_hanoi(n: i32) -> i32 {
     }
 
     2 * tower_of_hanoi(n - 1) + 1
+}
+
+fn sum_triangle_of_array(arr: &mut Vec<i8>, size: usize) {
+    if size < 1 {
+        return;
+    }
+
+    let mut tmp: Vec<i8> = Vec::new();
+    for i in 0..size - 1 {
+        let sum = arr[i] + arr[i + 1];
+        tmp.push(sum);
+    }
+
+    sum_triangle_of_array(&mut tmp, size - 1);
+
+    println!("{:?}", arr)
 }
