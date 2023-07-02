@@ -7,6 +7,11 @@ fn main() {
 
     let string = "hello";
     println!("{:?}", palindrome(string));
+
+    // tower of hanoi
+    println!("Tower of hanoi for 3 disks is {}", tower_of_hanoi(0));
+    println!("Tower of hanoi for 3 disks is {}", tower_of_hanoi(3));
+    println!("Tower of hanoi for 4 disks is {}", tower_of_hanoi(4));
 }
 
 fn fact(num: i32) -> i32 {
@@ -39,4 +44,12 @@ fn palindrome(word: &str) -> bool {
     } else {
         false
     }
+}
+
+fn tower_of_hanoi(n: i32) -> i32 {
+    if n == 0 {
+        return 0;
+    }
+
+    2 * tower_of_hanoi(n - 1) + 1
 }
