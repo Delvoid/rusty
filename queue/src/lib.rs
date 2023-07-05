@@ -4,6 +4,12 @@ pub struct Queue<T> {
     element: LinkedList<T>,
 }
 
+impl<T> Default for Queue<T> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<T> Queue<T> {
     pub fn new() -> Self {
         Queue {
@@ -52,4 +58,3 @@ mod tests {
         assert_eq!(queue.is_empty(), true);
     }
 }
-```
