@@ -53,6 +53,23 @@ pub fn longest_common_subsequence(a: &str, b: &str) -> String {
     result.iter().collect()
 }
 
+pub fn maximum_subarray(arr: &[i32]) -> i32 {
+    let mut tmp = vec![0; arr.len()];
+    tmp[0] = arr[0];
+    let mut result = tmp[0];
+
+    for i in 1..arr.len() {
+        if tmp[i - 1] > 0 {
+            tmp[i] = tmp[i - 1] + arr[i];
+        } else {
+            tmp[i] = arr[i];
+        }
+
+        result = result.max(tmp[i]);
+    }
+    result
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -74,5 +91,11 @@ mod tests {
 
         assert_eq!(longest_common_subsequence("abcdgh", "aedfhr"), "adh");
         assert_eq!(longest_common_subsequence("aggtab", "gxtxayb"), "gtab");
+    }
+
+    #[test]
+    fn test_max_subarray() {
+        assert_eq!(maximum_subarray(&[1, 0, 5, 8]), 14);
+        assert_eq!(maximum_subarray(&[-2, 1, -3, 4, -1, 2, 1, -5, 4]), 6);
     }
 }
